@@ -1,22 +1,28 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import CoordinatesFinder from '../components/CoordinatesFinder';
+import {
+  ScrollView,
+   StyleSheet,
+   Text,
+   View,
+   Image
+ } from 'react-native';
 
 export default function NewScreen() {
   return (
     <ScrollView style={styles.container}>
-    <Text style={styles.getStartedText}>Take a picture and fill the details!</Text>
-
-    <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-
+      <Text style={styles.getStartedText}>Take a picture and fill the details!</Text>
+      <View style={styles.welcomeContainer}>
+            <Image
+              source={
+                __DEV__
+                  ? require('../assets/images/robot-dev.png')
+                  : require('../assets/images/robot-prod.png')
+              }
+              style={styles.welcomeImage}
+            />
+            <CoordinatesFinder />
+      </View>
     </ScrollView>
   );
 }
@@ -49,4 +55,9 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginLeft: -10,
   },
+  instructions: {
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5
+  }
 });
