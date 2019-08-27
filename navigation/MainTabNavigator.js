@@ -3,74 +3,56 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ListScreen from '../screens/ListScreen';
+import NewScreen from '../screens/NewScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
 });
 
-const HomeStack = createStackNavigator(
+const ListStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: ListScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+ListStack.navigationOptions = {
+  tabBarLabel: 'List',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
+          ? 'ios-list'
           : 'md-information-circle'
       }
     />
   ),
 };
 
-HomeStack.path = '';
+ListStack.path = '';
 
-const LinksStack = createStackNavigator(
+const NewStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    New: NewScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+NewStack.navigationOptions = {
+  tabBarLabel: 'New',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-camera' : 'md-link'} />
   ),
 };
 
-LinksStack.path = '';
-
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
-};
-
-SettingsStack.path = '';
+NewStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  NewStack,
+  ListStack
 });
 
 tabNavigator.path = '';
