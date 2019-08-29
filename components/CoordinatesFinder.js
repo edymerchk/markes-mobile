@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {
+  Button,
+  Block,
+  Input,
+  Text
+ } from 'galio-framework';
 
 import {
-  Text,
   View,
-  TouchableOpacity,
   StyleSheet,
   TextInput
  } from 'react-native';
@@ -42,28 +46,30 @@ export default class CoordinatesFinder extends Component {
   }
 
   findCoordinates = () => {
-    this.setState({ showForm: true, name: "" })
     navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({ coords: position.coords })
       },
       error => console.log('error', error)
     );
+    this.setState({ showForm: true, name: "" })
   };
 
   renderForm = () => {
-    if (this.state.showForm) {
+    if (this.state.showForm && this.state.coords) {
       return(
-        <View style={styles.container}>
-          <TextInput
-            style={styles.nameTextInput}
-            onChangeText={(name) => this.setState({name})}
-            value={this.state.name}
-          />
-          <TouchableOpacity style={styles.welcome}  onPress={this.saveMarker} >
-            <Text>Save!</Text>
-          </TouchableOpacity>
-        </View>
+        <Block style={styles.container}>
+          <Block>
+           <Text p size={10}>lat: {this.state.coords.latitude}, long: {this.state.coords.longitude} </Text>
+            <Input
+             placeholder="Name"
+             onChangeText={(name) => this.setState({name})}
+            />
+          </Block>
+          <Button style={styles.welcome}  onPress={this.saveMarker} >
+            Save!
+          </Button>
+        </Block>
       )
     }
   };
@@ -71,12 +77,13 @@ export default class CoordinatesFinder extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.welcome}  onPress={this.findCoordinates} >
-          <Text>Get Coordinates!</Text>
-        </TouchableOpacity>
+        <Button
+          style={styles.welcome}
+          color="info"
+          onPress={this.findCoordinates}>
+          Get Coordinates!
+        </Button>
         {this.renderForm()}
-
-        <Text>{this.state.location}</Text>
       </View>
     );
   }
@@ -91,9 +98,6 @@ const styles = StyleSheet.create({
   welcome: {
     textAlign: "center",
     margin: 20,
-    height: 70,
-    backgroundColor: '#DDDDDD',
-    padding: 20
   },
   nameTextInput: {
     height: 70,

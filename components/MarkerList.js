@@ -36,7 +36,6 @@ export default class MarkerList extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.title}>Marker List </Text>
         <FlatList
           data={this.state.markers}
           renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}

@@ -11,7 +11,6 @@ import {
 export default function NewScreen() {
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.getStartedText}>Take a picture and fill the details!</Text>
       <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -28,7 +27,7 @@ export default function NewScreen() {
 }
 
 NewScreen.navigationOptions = {
-  title: 'New',
+  title: 'New Marker',
 };
 
 const styles = StyleSheet.create({
@@ -36,12 +35,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
-  },
-  getStartedText:{
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
   },
   welcomeContainer: {
     alignItems: 'center',
@@ -54,10 +47,5 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
   }
 });
