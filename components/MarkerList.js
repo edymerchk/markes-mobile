@@ -9,7 +9,8 @@ import {
 import {
   View,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator
  } from 'react-native';
 
 export default class MarkerList extends Component {
@@ -22,11 +23,12 @@ export default class MarkerList extends Component {
   }
 
   getMarkers(){
+    this.setState({ loading: true })
     console.log('Fetching markers')
     const url = "https://markers-backend-production.herokuapp.com/api/markers"
     axios.get(url)
     .then(response => {
-      this.setState({ markers: response.data })
+      this.setState({ markers: response.data, loading: false })
     })
     .catch(error => {
       console.log(error);
@@ -34,19 +36,26 @@ export default class MarkerList extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <FlatList
-          data={this.state.markers}
-          renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}
-          keyExtractor={(item, index) => index.toString()}
-         />
 
-         <NavigationEvents
-          onWillFocus={payload => { this.getMarkers()}}
-        />
-      </View>
-    );
+    if (this.state.loading) {
+      return(
+        <View style={styles.horizontal}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      )
+    } else{
+      return (
+        <View style={styles.container}>
+          <FlatList
+            data={this.state.markers}
+            renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}
+            keyExtractor={(item, index) => index.toString()}
+           />
+
+           <NavigationEvents onWillFocus={payload => { this.getMarkers()}}/>
+        </View>
+      );
+    }
   }
 }
 
@@ -67,5 +76,10 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     height: 44,
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10
   }
 });
