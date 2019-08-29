@@ -47,7 +47,7 @@ export default class MarkerList extends Component {
           avatar="http://i.pravatar.cc/100?id=skater"
           imageStyle={styles.cardImageRadius}
           imageBlockStyle={{ padding: 2 }}
-          image="http://i.pravatar.cc/300"
+          image="http://lorempixel.com/400/200/"
     />
   );
 

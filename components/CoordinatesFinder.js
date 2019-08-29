@@ -44,6 +44,7 @@ export default class CoordinatesFinder extends Component {
     .then((response) => {
       console.log(response)
       this.setState({ showForm: false, name: "" })
+      this.props.navigation.navigate('ListStack')
     })
     .catch((error) => {
       console.log('error', error);

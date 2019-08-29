@@ -22,7 +22,7 @@ render() {
                 }
                 style={styles.welcomeImage}
               />
-              <CoordinatesFinder />
+              <CoordinatesFinder navigation={this.props.navigation} />
         </View>
       </ScrollView>
     );
