@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { NavigationEvents } from "react-navigation";
 
 import {
   Text
@@ -20,7 +21,7 @@ export default class MarkerList extends Component {
     }
   }
 
-  getData(){
+  getMarkers(){
     console.log('Fetching markers')
     const url = "https://markers-backend-production.herokuapp.com/api/markers"
     axios.get(url)
@@ -32,11 +33,6 @@ export default class MarkerList extends Component {
     });
   }
 
-  componentDidMount(){
-    this.setState({ loading: true })
-    this.getData();
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -45,6 +41,10 @@ export default class MarkerList extends Component {
           renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}
           keyExtractor={(item, index) => index.toString()}
          />
+
+         <NavigationEvents
+          onWillFocus={payload => { this.getMarkers()}}
+        />
       </View>
     );
   }

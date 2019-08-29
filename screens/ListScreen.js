@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { Component } from 'react';
 import MarkerList from '../components/MarkerList';
+
 import {
   Image,
   Platform,

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavigationEvents } from "react-navigation";
 import axios from 'axios';
 import {
   Button,
@@ -21,6 +22,10 @@ export default class CoordinatesFinder extends Component {
       name: "",
       showForm: false
     }
+  }
+
+  resetScreen(){
+    this.setState({ showForm: false, name: "", coords: null })
   }
 
   saveMarker = () => {
@@ -84,6 +89,7 @@ export default class CoordinatesFinder extends Component {
           Get Coordinates!
         </Button>
         {this.renderForm()}
+        <NavigationEvents onWillFocus={payload => { this.resetScreen()}}/>
       </View>
     );
   }
