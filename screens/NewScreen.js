@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CoordinatesFinder from '../components/CoordinatesFinder';
 import {
   ScrollView,
@@ -8,23 +8,27 @@ import {
    Image
  } from 'react-native';
 
-export default function NewScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-            <CoordinatesFinder />
-      </View>
-    </ScrollView>
-  );
+export default class NewScreen extends Component {
+
+render() {
+    return (
+      <ScrollView style={styles.container}>
+        <View style={styles.welcomeContainer}>
+              <Image
+                source={
+                  __DEV__
+                    ? require('../assets/images/robot-dev.png')
+                    : require('../assets/images/robot-prod.png')
+                }
+                style={styles.welcomeImage}
+              />
+              <CoordinatesFinder />
+        </View>
+      </ScrollView>
+    );
+  }
 }
+
 
 NewScreen.navigationOptions = {
   title: 'New Marker',

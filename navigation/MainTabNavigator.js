@@ -45,10 +45,11 @@ NewStack.navigationOptions = {
   tabBarLabel: 'New',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-camera' : 'md-link'} />
-  ),
+  )
 };
 
 NewStack.path = '';
+
 
 const tabNavigator = createBottomTabNavigator({
   NewStack,

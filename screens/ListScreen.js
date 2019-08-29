@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, { Component } from 'react';
 import MarkerList from '../components/MarkerList';
 import {
   Image,
@@ -13,22 +13,23 @@ import {
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <MarkerList />
-      </ScrollView>
-    </View>
-  );
+export default class ListScreen extends Component {
+  render() {
+    return (
+        <View style={styles.container}>
+          <ScrollView
+            style={styles.container}
+            contentContainerStyle={styles.contentContainer}>
+            <MarkerList />
+          </ScrollView>
+        </View>
+    );
+  }
 }
 
-HomeScreen.navigationOptions = {
-  title: 'Marker List',
+ListScreen.navigationOptions = {
+  title: 'Marker List'
 };
-
 
 const styles = StyleSheet.create({
   container: {

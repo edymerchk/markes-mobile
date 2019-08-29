@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import {
-  Text,
+  Text
+ } from 'galio-framework';
+
+import {
   View,
   FlatList,
   StyleSheet
@@ -18,6 +21,7 @@ export default class MarkerList extends Component {
   }
 
   getData(){
+    console.log('Fetching markers')
     const url = "https://markers-backend-production.herokuapp.com/api/markers"
     axios.get(url)
     .then(response => {
