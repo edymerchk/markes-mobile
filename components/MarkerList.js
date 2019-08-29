@@ -3,7 +3,8 @@ import axios from 'axios';
 import { NavigationEvents } from "react-navigation";
 
 import {
-  Text
+  Text,
+  Card
  } from 'galio-framework';
 
 import {
@@ -35,6 +36,21 @@ export default class MarkerList extends Component {
     });
   }
 
+  renderItem = ({item}) => (
+     <Card
+          flex
+          borderless
+          style={styles.card}
+          title={item.name}
+          caption="139 minutes ago"
+          location="Sabaneta"
+          avatar="http://i.pravatar.cc/100?id=skater"
+          imageStyle={styles.cardImageRadius}
+          imageBlockStyle={{ padding: 2 }}
+          image="http://i.pravatar.cc/300"
+    />
+  );
+
   render() {
 
     if (this.state.loading) {
@@ -48,10 +64,9 @@ export default class MarkerList extends Component {
         <View style={styles.container}>
           <FlatList
             data={this.state.markers}
-            renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}
+            renderItem={this.renderItem}
             keyExtractor={(item, index) => index.toString()}
            />
-
            <NavigationEvents onWillFocus={payload => { this.getMarkers()}}/>
         </View>
       );
