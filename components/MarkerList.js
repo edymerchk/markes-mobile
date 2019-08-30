@@ -11,7 +11,9 @@ import {
   View,
   FlatList,
   StyleSheet,
-  ActivityIndicator
+  ActivityIndicator,
+  Alert,
+  TouchableOpacity
  } from 'react-native';
 
 export default class MarkerList extends Component {
@@ -36,20 +38,25 @@ export default class MarkerList extends Component {
     });
   }
 
-  renderItem = ({item}) => (
+  renderItem = ({item}) => {
+    const { navigate } = this.props.navigation;
+    return(
+    <TouchableOpacity onPress={() => navigate('Details', { item: item })}>
      <Card
           flex
           borderless
           style={styles.card}
           title={item.name}
-          caption="139 minutes ago"
+          caption={`lat: ${item.lat} long: ${item.long}`}
           location="Sabaneta"
-          avatar="http://i.pravatar.cc/100?id=skater"
+          avatar={`http://i.pravatar.cc/100?u=${item.id}`}
           imageStyle={styles.cardImageRadius}
           imageBlockStyle={{ padding: 2 }}
-          image="http://lorempixel.com/400/200/"
+          image="https://images.unsplash.com/photo-1497802176320-541c8e8de98d?&w=1600&h=900&fit=crop&crop=entropy&q=300"
     />
-  );
+    </TouchableOpacity>
+    )
+  }
 
   render() {
 

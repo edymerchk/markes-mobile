@@ -21,7 +21,7 @@ export default class ListScreen extends Component {
           <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainer}>
-            <MarkerList />
+            <MarkerList navigation={this.props.navigation} />
           </ScrollView>
         </View>
     );

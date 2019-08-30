@@ -72,7 +72,7 @@ export default class CoordinatesFinder extends Component {
              onChangeText={(name) => this.setState({name})}
             />
           </Block>
-          <Button style={styles.welcome}  onPress={this.saveMarker} >
+          <Button style={styles.btn}  onPress={this.saveMarker} >
             Save!
           </Button>
         </Block>
@@ -84,7 +84,7 @@ export default class CoordinatesFinder extends Component {
     return (
       <View style={styles.container}>
         <Button
-          style={styles.welcome}
+          style={styles.btn}
           color="info"
           onPress={this.findCoordinates}>
           Get Coordinates!
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  welcome: {
+  btn: {
     textAlign: "center",
     margin: 20,
   },

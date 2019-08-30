@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import ListScreen from '../screens/ListScreen';
 import NewScreen from '../screens/NewScreen';
+import DetailsScreen from '../screens/DetailsScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -14,6 +15,7 @@ const config = Platform.select({
 const ListStack = createStackNavigator(
   {
     Home: ListScreen,
+    Details: DetailsScreen
   },
   config
 );
