@@ -27,6 +27,7 @@ export default class CameraBox extends React.Component {
       let photo = await this.camera.takePictureAsync({base64: true});
       let imageUrl = `data:image/jpg;base64,${photo.base64}`
       this.setState({ showImage: true, imageUrl: imageUrl })
+      this.props.handleCamSnap(imageUrl);
     }
   };
 
