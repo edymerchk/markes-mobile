@@ -52,7 +52,7 @@ export default class MarkerList extends Component {
           avatar={`http://i.pravatar.cc/100?u=${item.id}`}
           imageStyle={styles.cardImageRadius}
           imageBlockStyle={{ padding: 2 }}
-          image="https://images.unsplash.com/photo-1497802176320-541c8e8de98d?&w=1600&h=900&fit=crop&crop=entropy&q=300"
+          image={item.image}
     />
     </TouchableOpacity>
     )

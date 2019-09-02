@@ -15,7 +15,6 @@ import {
 
 export default class DetailsScreen extends Component {
   openMarker(item){
-    console.log('open', item)
     const scheme = 'maps:0,0?q=';
     const latLng = `${item.lat},${item.long}`;
     const label = item.name;
@@ -38,7 +37,7 @@ export default class DetailsScreen extends Component {
             avatar={`http://i.pravatar.cc/100?u=${item.id}`}
             imageStyle={styles.cardImageRadius}
             imageBlockStyle={{ padding: 2 }}
-            image="https://images.unsplash.com/photo-1497802176320-541c8e8de98d?&w=1600&h=900&fit=crop&crop=entropy&q=300"
+            image={item.image}
           />
           <Button color="warning" style={styles.btn} onPress={() => this.openMarker(item)}>Open Map</Button>
         </View>
