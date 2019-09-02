@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CoordinatesFinder from '../components/CoordinatesFinder';
+import CameraBox from '../components/CameraBox';
 import {
   ScrollView,
    StyleSheet,
@@ -13,16 +14,9 @@ export default class NewScreen extends Component {
 render() {
     return (
       <ScrollView style={styles.container}>
+        <CameraBox/>
         <View style={styles.welcomeContainer}>
-              <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/robot-dev.png')
-                    : require('../assets/images/robot-prod.png')
-                }
-                style={styles.welcomeImage}
-              />
-              <CoordinatesFinder navigation={this.props.navigation} />
+          <CoordinatesFinder navigation={this.props.navigation} />
         </View>
       </ScrollView>
     );
@@ -44,12 +38,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
   }
 });
