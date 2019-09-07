@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CoordinatesFinder from '../components/CoordinatesFinder';
 import CameraBox from '../components/CameraBox';
 import { NavigationEvents } from "react-navigation";
+import getEnvVars from '../environment';
+const { apiUrl } = getEnvVars();
 
 import axios from 'axios';
 import {
@@ -45,13 +47,11 @@ handleCoordinatesFinder = (marker) => {
 }
 
 saveMarker = () => {
-  const url = "https://markers-backend-production.herokuapp.com/api/markers"
-
   // TODO: improve this
   this.state.marker.image = this.state.imageUrl;
   this.state.marker.name = this.state.name;
 
-  axios.post(url, {
+  axios.post(apiUrl, {
     marker: this.state.marker
   })
   .then((response) => {

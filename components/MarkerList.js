@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { NavigationEvents } from "react-navigation";
+import getEnvVars from '../environment';
+const { apiUrl } = getEnvVars();
 
 import {
   Text,
@@ -27,9 +29,8 @@ export default class MarkerList extends Component {
 
   getMarkers(){
     this.setState({ loading: true })
-    console.log('Fetching markers')
-    const url = "https://markers-backend-production.herokuapp.com/api/markers"
-    axios.get(url)
+    console.log(`Fetching markers from ${apiUrl}`)
+    axios.get(apiUrl)
     .then(response => {
       this.setState({ markers: response.data, loading: false })
     })
